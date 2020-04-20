@@ -349,7 +349,7 @@
   display: inline-block;
   text-decoration: none; }
   .slider__title[href] {
-    color: #26a9e0; }
+    color: #86BA0C; }
 
 .slider__nav {
   position: relative; }
@@ -371,19 +371,20 @@
           align-items: center;
   background: none; }
 
-.slider__left:hover, .slider__right:hover {
-  background: rgba(38, 169, 224, 0.05); }
+.slider__left:hover svg, .slider__right:hover svg {
+  fill: #86BA0C;  }
 
 .slider__left svg, .slider__right svg {
-  fill: #26A9E0;
+  fill: rgba(134,186,12, 0.6);
   width: 60px;
   height: 60px; }
 
 .slider__left {
   left: 0; }
 
-.slider__arrow_disable svg{
+.slider__arrow_disable, .slider__arrow_disable svg, .slider__arrow_disable:hover svg{
   fill: rgba(0, 0, 0, 0.15);
+  cursor: default;
 }
 .slider__right {
   right: 0; }
