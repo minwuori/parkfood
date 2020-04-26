@@ -1,0 +1,14 @@
+.slider {
+  position: relative;
+  width: 100%;
+  padding: 0 60px; }
+
+.slider__title {
+  font-weight: 700;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 10px;
+  display: inline-block;
+  text-decoration: none; }
+  .slider__title[href] {
+    color: #86BA0C; }
