@@ -12,3 +12,34 @@
   text-decoration: none; }
   .slider__title[href] {
     color: #86BA0C; }
+.slider__banner .slick-prev{
+  left: 5px;
+}
+.slider__banner .slick-next{
+  right: 5px;
+}
+
+@media (max-width: 425px) {
+  .slide__banner {
+    height: 235px;
+  }
+}
+@media (min-width: 426px) and (max-width: 652px) {
+  .slide__banner {
+    height: 355px;
+  }
+}
+@media (min-width: 653px) {
+  .slide__banner {
+    height: 550px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .slider__product .slick-prev{
+    left: -34px;
+  }
+  .slider__product .slick-next{
+    right: -34px;
+  }
+}
