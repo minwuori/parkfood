@@ -2,8 +2,8 @@
 var helper = {
     // Плавный скролл
     smoothScroll: function (target){
-        var startY = alphabet.defineCurrentYPosition();
-        var stopY = alphabet.defineElementYPosition(target);
+        var startY = helper.defineCurrentYPosition();
+        var stopY = helper.defineElementYPosition(target);
         var distance = stopY > startY ? stopY - startY : startY - stopY;
         if (distance < 100) {
             scrollTo(0, stopY); return;
@@ -77,14 +77,14 @@ const map = () => {
 
         myMap.geoObjects.add(myPlacemark);
 
-        /*myMap.controls.add('zoomControl', {
+        myMap.controls.add('zoomControl', {
             size: 'large',
             position: {
                 right: 15,
                 left: 'auto',
                 top: 120
             }
-        });*/
+        });
     };
 
     return init;
@@ -98,41 +98,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // найдем все якоря
     const anchors = Array.prototype.slice.call(document.querySelectorAll('a[href*="#"]'));
-    // устанавливаем время анимации и количество кадров
-    const framesCount = 10;
-    const animationTime = 1000;
 
     anchors.forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
             // убираем стандартное поведение
             e.preventDefault();
             // для каждого якоря берем соответствующий ему элемент и определяем его координату Y
-            let coordY = document.querySelector(anchor.getAttribute('href')).getBoundingClientRect().top + window.pageYOffset;
-
-            // запускаем интервал, в котором
-            let scroller = setInterval(function() {
-                // считаем на сколько скроллить за 1 такт
-                let scrollBy = coordY / framesCount;
-
-                // если к-во пикселей для скролла за 1 такт больше расстояния до элемента
-                // и дно страницы не достигнуто
-                if(scrollBy > window.pageYOffset - coordY && window.innerHeight + window.pageYOffset < document.body.offsetHeight) {
-                    // то скроллим на к-во пикселей, которое соответствует одному такту
-                    window.scrollBy(0, scrollBy);
-                } else {
-                    // иначе добираемся до элемента и выходим из интервала
-                    window.scrollTo(0, coordY);
-                    clearInterval(scroller);
-                }
-                // время интервала равняется частному от времени анимации и к-ва кадров
-            }, animationTime / framesCount);
-
+            let coordElement = document.querySelector(anchor.getAttribute('href')).getBoundingClientRect().top + window.pageYOffset;
+            //скроллим
+            $([document.documentElement, document.body]).animate({
+                scrollTop: coordElement - 70
+            }, 500);
         });
-
     });
 
+    //scrollToTop
+    var scrollToTopElement = $('#back-top');
+    $(window).scroll(function() {
+        var range = $(this).scrollTop();
+        (range > 500) ? scrollToTopElement.fadeIn('1000') : scrollToTopElement.fadeOut('1000');
+    });
 
-    $('.js__slider_banner').slick();
+    scrollToTopElement.on('click', function() {
+        $('body,html').animate({
+            scrollTop: 0
+        }, '600');
+    });
+
+    $('.js__slider_banner').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    });
+
     $('.js__slider_product').slick(
         {
             infinite: true,
