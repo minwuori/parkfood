@@ -51,8 +51,8 @@ const map = () => {
 
     const init = () => {
         const mapContainer = document.querySelector('#map');
-        const lat = 52.83814761662174;
-        const lng = 52.23174249927979;
+        const lat = 52.77718094227807;
+        const lng = 52.25256082601846;
 
         let data = {
             coords: [lat, lng]

@@ -210,7 +210,8 @@ code {
   background: transparent no-repeat center center;
   background-size: 24px 24px;
   border: 1px solid transparent;
-  border-radius: .25rem
+  border-radius: .25rem;
+  display: none;
 }
 
 .navbar-toggler:focus,.navbar-toggler:hover {
@@ -1560,11 +1561,6 @@ a:focus {
     align-items: center;
 }
 
-@media (max-width: 575px) {
-  .contact-rich .block {
-    margin-bottom:30px
-  }
-}
 
 .contact-rich .block{
     margin-right: 5px;
@@ -1604,6 +1600,25 @@ a:focus {
   filter: alpha(opacity=0);
   border-radius: 50px
 }
+
+@media (max-width: 575px) {
+  .contact-rich .block .icon {
+    width: 30px;
+    height: 30px;
+    line-height: 32px;
+  }
+  .contact-rich .block .icon:after {
+    width: 30px;
+    height: 30px;
+    line-height: 32px;
+  }
+
+  .contact-rich .contacts {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
 
 .contact-rich:hover .block .icon {
   -moz-box-shadow: 0 0 0 4px rgba(254,108,97,0);
@@ -3814,7 +3829,7 @@ body main {
 .box-testimonial .box-des .title {
   position: relative;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 18px;
   padding-bottom: 5px;
   margin-bottom: 5px;
   font-family: "Roboto",serif;
@@ -3824,7 +3839,7 @@ body main {
 .box-testimonial .box-des .title::before {
   content: "";
   position: absolute;
-  width: 110px;
+  width: 100%;
   height: 1px;
   background: rgba(143,143,143,.25);
   bottom: 0;
