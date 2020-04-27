@@ -1615,10 +1615,23 @@ a:focus {
     display: none;
 
   }
+  .contact-rich .contacts {
+    font-size: 21px;
+    line-height: 24px;
+  }
+}
+
+@media (max-width: 425px) {
+  .contact-rich .contacts {
+    font-size: 19px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 424px) {
 
   .contact-rich .contacts {
-    font-size: 15px;
-    line-height: 16px;
+    font-size: 16px;
+    line-height: 24px;
   }
 }
 
@@ -1761,7 +1774,12 @@ a:focus {
 
 @media (max-width: 991px) {
   .header-flex .center-header {
-    position:static!important
+    position:static!important;
+  }
+}
+@media (max-width: 767px) {
+  .header-flex .center-header {
+    display: none;
   }
 }
 .navbar-fixed-top,.navbar-fixed-bottom {
