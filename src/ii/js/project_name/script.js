@@ -51,40 +51,24 @@ const map = () => {
 
     const init = () => {
         const mapContainer = document.querySelector('#map');
-        const lat = 52.77718094227807;
-        const lng = 52.25256082601846;
 
-        let data = {
-            coords: [lat, lng]
-        };
+        let dataPlacemark = [[52.77718094227807, 52.25256082601846], [52.83814761662174, 52.23174249927979]];
 
         myMap = new ymaps.Map(mapContainer, {
-            center: data.coords,
-            controls: [],
-            zoom: 16
+            center: [52.77718094227807, 52.25256082601846],
+            controls: ['smallMapDefaultSet'],
+            zoom: 15
         });
 
-        const myPlacemark = (new ymaps.Placemark(data.coords, data, {
-            //balloonContentLayout: BalloonContentLayout,
-            balloonPanelMaxMapArea: 0,
-            iconLayout: 'default#image',
-            //hintContent: 'Хинт метки',
-            iconImageSize: [41, 50],
-            iconImageOffset: [-10, -50],
-            //iconImageHref: '../img/map/chg-pin.png'
-        }));
+        const myPlacemark = new ymaps.GeoObjectCollection(null, {
+            iconLayout: 'default#image'
+        });
 
+        for (var i = 0, l = dataPlacemark.length; i < l; i++) {
+            myPlacemark.add(new ymaps.Placemark(dataPlacemark[i]));
+        }
 
         myMap.geoObjects.add(myPlacemark);
-
-        myMap.controls.add('zoomControl', {
-            size: 'large',
-            position: {
-                right: 15,
-                left: 'auto',
-                top: 120
-            }
-        });
     };
 
     return init;
